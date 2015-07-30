@@ -2,7 +2,8 @@ angular.module('trifork', [
   'ngRoute',
   'ngCookies',
   'appControllers',
-  'appBackend'
+  'appBackend',
+  'appRouter'
   ]);
 
 var appControllers = angular.module('appControllers', []);
@@ -15,14 +16,14 @@ appControllers.controller('HomeCtrl', ['$scope', 'Api',
   }]);
 
 appControllers.controller('AccountCtrl', ['$scope', 'Api',
-  function($scope, Api) {
+  function ($scope, Api) {
 
     $scope.valid = false;
     Api.verifyToken().then(function() {
       $scope.valid = true;
 
       Api.getTransactions().then(function(response) {
-        console.log(response.data)
+        $scope.transactions = response.data.data;
       })
     });
   }]);
