@@ -1,6 +1,6 @@
 var backend = angular.module('appBackend', []);
 
-backend.service('Api', ['$http', '$cookies', '$location' ,
+backend.service('Api', ['$http', '$cookies', '$location',
   function ($http, $cookies, $location) {
 
     var base = 'http://localhost:1337/api/';
@@ -13,6 +13,7 @@ backend.service('Api', ['$http', '$cookies', '$location' ,
         }
       }).success(function(data, status, headers, config) {
         if(data) {
+          console.log(data)
           $cookies.put('token', data.data);
           $location.path('/account');
         }
@@ -42,7 +43,7 @@ backend.service('Api', ['$http', '$cookies', '$location' ,
 
       })
       .error(function() {
-        console.log("error")
+        console.log("error");
       })
     }
 
@@ -56,7 +57,7 @@ backend.service('Api', ['$http', '$cookies', '$location' ,
 
       })
       .error(function() {
-        console.log("error")
+        console.log("error");
       })
     }
   }])
