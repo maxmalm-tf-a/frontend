@@ -6,7 +6,7 @@ backend.service('Api', ['$http', '$cookies', '$location',
     var base = 'http://localhost:1337/api/';
 
     this.login = function(email, password) {
-      $http.get('http://localhost:1337/api/account', {
+      $http.get(base 'account', {
         params: {
           username: email,
           password: password

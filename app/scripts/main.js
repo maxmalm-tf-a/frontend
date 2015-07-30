@@ -4,7 +4,7 @@ angular.module('trifork', [
   'appControllers',
   'appBackend',
   'appRouter'
-  ]);
+]);
 
 var appControllers = angular.module('appControllers', []);
 
