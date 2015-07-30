@@ -1,0 +1,14 @@
+{
+  "name": "trifork-fe",
+  "private": true,
+  "dependencies": {
+    "one-nexus": "~2.0.0",
+    "angular": "~1.4.3",
+    "angular-route": "~1.4.3",
+    "angular-cookies": "~1.4.3"
+  },
+  "devDependencies": {
+    "chai": "~3.2.0",
+    "mocha": "~2.2.5"
+  }
+}
