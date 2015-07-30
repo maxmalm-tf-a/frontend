@@ -1,4 +1,6 @@
-app.config(['$routeProvider', '$locationProvider',
+var router = angular.module('appRouter', []);
+
+router.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
     //$locationProvider.html5Mode(true);
 
