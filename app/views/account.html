@@ -1,5 +1,19 @@
 My account
 
 <div ng-if="valid">
-  Ok!
+  <table class="table" ng-if="transactions">
+      <thead>
+          <tr>
+              <td colspan="4">Transactions</td>
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="t in transactions">
+              <td>{{ t.date }}</td>
+              <td>{{ t.text }}</td>
+              <td>{{ t.value }}</td>
+              <td>{{ t.sum }}</td>
+          </tr>
+      </tbody>
+  </table>
 </div>
