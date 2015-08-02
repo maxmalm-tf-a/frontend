@@ -13,7 +13,6 @@ backend.service('Api', ['$http', '$cookies', '$location',
         }
       }).success(function(data, status, headers, config) {
         if(data) {
-          console.log(data)
           $cookies.put('token', data.data);
           $location.path('/account');
         }
@@ -55,7 +54,8 @@ backend.service('Api', ['$http', '$cookies', '$location',
           token: $cookies.get('token')
         }
       })
-      .success(function() {
+      .error(function() {
+        console.log("error");
       })
     }
 
