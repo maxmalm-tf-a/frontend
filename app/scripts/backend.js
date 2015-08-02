@@ -44,9 +44,6 @@ backend.service('Api', ['$http', '$cookies', '$location',
           token: $cookies.get('token')
         }
       })
-      .success(function() {
-
-      })
       .error(function() {
         console.log("error");
       })
@@ -59,7 +56,14 @@ backend.service('Api', ['$http', '$cookies', '$location',
         }
       })
       .success(function() {
+      })
+    }
 
+    this.seedDatabase = function() {
+      return $http.get(base + 'populate', {
+        params: {
+          token: $cookies.get('token')
+        }
       })
       .error(function() {
         console.log("error");
