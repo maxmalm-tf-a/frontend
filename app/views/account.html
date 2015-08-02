@@ -1,19 +1,30 @@
-My account
-
-<div ng-if="valid">
-  <table class="table" ng-if="transactions">
-      <thead>
-          <tr>
-              <td colspan="4">Transactions</td>
-          </tr>
-      </thead>
-      <tbody>
-          <tr ng-repeat="t in transactions">
-              <td>{{ t.date }}</td>
-              <td>{{ t.text }}</td>
-              <td>{{ t.value }}</td>
-              <td>{{ t.sum }}</td>
-          </tr>
-      </tbody>
-  </table>
+<div class="container" id="main">
+  <div ng-if="valid">
+    My account ({{sum}} SEK)
+    <div class="row">
+      <div class="span-8">
+        <button class="button-brand-1" type="submit" ng-click="logout()">Logout</button>
+        <button class="button-brand-2" type="submit" ng-click="seed()">Seed</button>
+      </div>
+      <div class="span-4 transactions">
+        <table class="table" ng-if="transactions">
+            <thead>
+                <tr>
+                    <td colspan="4">Transactions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="t in transactions">
+                    <td>{{ t.date }}</td>
+                    <td>{{ t.text }}</td>
+                    <td>{{ t.value }}</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="circles-loader" ng-if="!valid">
+    Loading…
+  </div>
 </div>

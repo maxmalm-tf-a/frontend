@@ -1,0 +1,32 @@
+.intro {
+  background: url('/images/intro.jpg') no-repeat center center fixed;
+  background-size: cover;
+  width: 100vw;
+  min-height: 50vh;
+  text-align: center;
+  color: #fff;
+  h2 {
+    text-transform: uppercase;
+    font-size: 2em;
+  }
+  .header {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10vh 0;
+    .logo {
+      height: 2em;
+      vertical-align: initial;
+      display: block;
+      margin: 0 auto;
+      padding: 0;
+    }
+  }
+}
+
+.transactions {
+  background: #fff;
+  border: 1px solid #222;
+  color: #222;
+  padding: 10px;
+  border-radius: 10px;
+}

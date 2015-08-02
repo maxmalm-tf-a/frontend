@@ -2,24 +2,13 @@
 // endbower
 
 @import "bower_components/one-nexus/assets/styles/scss/skeleton/config";
+@import "config";
 
-$base-width            :   1200px;
-$max-width             :   90%;
-
-$columns               :   12;
-$gutter                :   2.5%;
-
-$brand-1               :   #2E54E3;
-$brand-2               :   #22A7F0;
-$brand-3               :   #03C9A9;
-
-$colors-brand: (
-  brand-1            :   $brand-1,
-  brand-2            :   $brand-2,
-  brand-3            :   $brand-3
-);
-
-$col-collapse          :   $breakpoint-2;
+@media (min-width: $breakpoint-3) {
+  body:not(.flyout-active) #flyout-trigger {
+    display: none;
+  }
+}
 
 
 /******************************************************************
@@ -67,4 +56,4 @@ Modules
 @import "bower_components/one-nexus/assets/styles/scss/modules/navigation";
 @import "bower_components/one-nexus/assets/styles/scss/modules/scroll-top";
 
-
+@import "style"

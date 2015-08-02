@@ -1,0 +1,17 @@
+$base-width            :   1200px;
+$max-width             :   90%;
+
+$columns               :   12;
+$gutter                :   2.5%;
+
+$brand-1               :   #2E54E3;
+$brand-2               :   #b34e90;
+$brand-3               :   #03C9A9;
+
+$colors-brand: (
+  brand-1            :   $brand-1,
+  brand-2            :   $brand-2,
+  brand-3            :   $brand-3
+);
+
+$col-collapse          :   $breakpoint-2;
