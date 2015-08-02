@@ -8,7 +8,7 @@ angular.module('trifork', [
 
 var appControllers = angular.module('appControllers', []);
 
-appControllers.controller('HomeCtrl', ['$scope', 'Api',
+appControllers.controller('LoginCtrl', ['$scope', 'Api',
   function ($scope, Api) {
     $scope.submit = function(e) {
       Api.login(e.email, e.password)

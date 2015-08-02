@@ -20,6 +20,11 @@ backend.service('Api', ['$http', '$cookies', '$location',
       });
     }
 
+    this.logout = function () {
+      $cookies.remove('token');
+      $location.path('/');
+    }
+
     this.verifyToken = function () {
       return $http.get(base + 'verifytoken', {
         params: {
@@ -29,7 +34,7 @@ backend.service('Api', ['$http', '$cookies', '$location',
       .error(function() {
         console.log("Incorrect token");
         $cookies.remove('token');
-        $location.path('/');
+        $location.path('/login');
       })
     }
 

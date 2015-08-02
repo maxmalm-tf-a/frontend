@@ -13,6 +13,10 @@ router.config(['$routeProvider', '$locationProvider',
         templateUrl: '/views/account.html',
         controller: 'AccountCtrl'
       }).
+      when('/login', {
+        templateUrl: '/views/login.html',
+        controller: 'LoginCtrl'
+      }).
       otherwise({
         redirectTo: '/'
       });
