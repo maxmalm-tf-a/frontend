@@ -3,7 +3,8 @@ angular.module('trifork', [
   'ngCookies',
   'appControllers',
   'appBackend',
-  'appRouter'
+  'appRouter',
+  'angular-chartist'
 ]);
 
 var appControllers = angular.module('appControllers', []);
@@ -30,10 +31,27 @@ appControllers.controller('AccountCtrl', ['$scope', 'Api',
       $scope.valid = true;
 
       Api.getTransactions().then(function(response) {
-        console.log(response)
         if(response.data.data.length > 0) {
           $scope.sum = response.data.data[0].sum;
           $scope.transactions = response.data.data;
+
+          // Get chart data
+          // I don't really like the way this is done
+          var data = response.data.data.reverse();
+          var dataset = [];
+          var labels = [];
+          data.map(function (item) {
+            labels.push(item.date)
+            dataset.push(item.sum)
+          });
+          $scope.lineChart = {
+            labels: labels,
+            series: [
+              {
+                data: dataset
+              }
+            ]
+          };
         }
       })
     });

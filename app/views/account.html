@@ -1,12 +1,13 @@
 <div class="container" id="main">
+  <chartist class="ct-chart" chartist-data="lineChart" chartist-chart-type="Line"></chartist>
   <div ng-if="valid">
     My account ({{sum}} SEK)
     <div class="row">
-      <div class="span-8">
+      <div class="span-6">
         <button class="button-brand-1" type="submit" ng-click="logout()">Logout</button>
         <button class="button-brand-2" type="submit" ng-click="seed()">Seed</button>
       </div>
-      <div class="span-4 transactions">
+      <div class="span-6 transactions">
         <table class="table" ng-if="transactions">
             <thead>
                 <tr>
