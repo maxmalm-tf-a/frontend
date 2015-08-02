@@ -1,7 +1,7 @@
 var backend = angular.module('appBackend', []);
 
-backend.service('Api', ['$http', '$cookies', '$location',
-  function ($http, $cookies, $location) {
+backend.service('Api', ['$http', '$cookies', '$location', '$route',
+  function ($http, $cookies, $location, $route) {
 
     var base = 'http://localhost:1337/api/';
 
@@ -64,6 +64,9 @@ backend.service('Api', ['$http', '$cookies', '$location',
         params: {
           token: $cookies.get('token')
         }
+      })
+      .success(function() {
+        $route.reload();
       })
       .error(function() {
         console.log("error");
