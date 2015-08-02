@@ -24,11 +24,26 @@ appControllers.controller('AccountCtrl', ['$scope', 'Api',
   function ($scope, Api) {
 
     $scope.valid = false;
+    $scope.sum = 0;
+
     Api.verifyToken().then(function() {
       $scope.valid = true;
 
       Api.getTransactions().then(function(response) {
-        $scope.transactions = response.data.data;
+        console.log(response)
+        if(response.data.data.length > 0) {
+          $scope.sum = response.data.data[0].sum;
+          $scope.transactions = response.data.data;
+        }
       })
     });
+
+    $scope.logout = function() {
+      console.log("Logout")
+      Api.logout();
+    }
+
+    $scope.seed = function() {
+      Api.seedDatabase();
+    }
   }]);
