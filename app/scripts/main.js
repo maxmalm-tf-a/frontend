@@ -15,6 +15,11 @@ appControllers.controller('LoginCtrl', ['$scope', 'Api',
     }
   }]);
 
+appControllers.controller('HomeCtrl', ['$scope', 'Api',
+  function ($scope, Api) {
+
+  }]);
+
 appControllers.controller('AccountCtrl', ['$scope', 'Api',
   function ($scope, Api) {
 
