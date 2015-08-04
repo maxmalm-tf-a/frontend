@@ -1,34 +1,23 @@
-$(window).load(function(){
+var flyout = angular.module('flyout', []);
 
-    function toggleFlyout(state) {
+flyout.directive('flyout', [function () {
+  return {
+    restrict: 'E',
+    templateUrl: 'views/flyout.html',
+    scope: {
+      menuItems: '=items'
+    },
+    controller: function($scope) {
+      console.log($scope.menuItems)
+      console.log("oi from directive")
 
-        function flyoutEvents(){
-            $('body').toggleClass('flyout-active');
-            $('#flyout-trigger').toggleClass('active');
-            $('#site-overlay').toggleClass('visible');
+      $scope.overlay = {
+        open: false,
+        toggle: function() {
+          $scope.overlay.open = !$scope.overlay.open;
+          console.log("toggle", $scope.overlay);
         }
-
-        if($('body').hasClass('flyout-active')) {  // is the flyout nav currently toggled?
-            // yes we are
-            if(state != 1) {
-                flyoutEvents();
-            }
-        } else {
-            // no, we are not
-            if(state != 0) {
-                flyoutEvents();
-            }
-        }
-
-    } // end toggleFlyout()
-
-    // toggle the flyout nav
-    $('#flyout-trigger').click(function() {
-      toggleFlyout();
-    });
-
-    $('#flyout a, .site-overlay').click(function() {
-      toggleFlyout(0);
-    });
-
-}); // end window.load
+      }
+    }
+  };
+}])

@@ -4,6 +4,7 @@ angular.module('trifork', [
   'appControllers',
   'appBackend',
   'appRouter',
+  'flyout',
   'angular-chartist'
 ]);
 
@@ -14,6 +15,15 @@ appControllers.controller('LoginCtrl', ['$scope', 'Api',
     $scope.submit = function(e) {
       Api.login(e.email, e.password)
     }
+  }]);
+
+appControllers.controller('HeaderCtrl', ['$scope',
+  function ($scope) {
+    $scope.items = [
+      {href: '/', name: "Start"},
+      {href: '/account', name: "My account"},
+      {href: '/about', name: "About us"},
+    ]
   }]);
 
 appControllers.controller('HomeCtrl', ['$scope', 'Api',

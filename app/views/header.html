@@ -1,43 +1,29 @@
-<header class="app-header">
-    <div class="container">
-        <div class="header-wrapper">
-            <!-- Logo -->
-            <div class="logo">
-                <a href="/#/">
-                    <img src="images/bank-icon.png" alt="Bank" />
-                </a>
-            </div>
-            <!-- Main-Nav -->
-            <nav class="app-nav" id="app-nav">
-                <ul>
-                    <li><a href="/#/">Start</a></li>
-                    <li><a href="/#/account">My account</a></li>
-                    <li><a href="/#/about">About us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</header>
+<div  ng-controller="HeaderCtrl"
+  <header class="app-header">
+      <div class="container">
+          <div class="header-wrapper">
+              <!-- Logo -->
+              <div class="logo">
+                  <a href="/#/">
+                      <img src="images/bank-icon.png" alt="Bank" />
+                  </a>
+              </div>
+              <!-- Main-Nav -->
+              <nav class="app-nav" id="app-nav">
+                  <ul>
+                      <li ng-repeat="item in items">
+                        <a ng-href="/#{{item.href}}" ng-bind="item.name"></a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+  </header>
 
-<!-- Scroll to top icon-->
-<a class="icon-border scroll-top" href="#site-content">
-    <i class="fa fa-angle-up"></i>
-</a>
+  <!-- Scroll to top icon-->
+  <a class="icon-border scroll-top" href="#site-content">
+      <i class="fa fa-angle-up"></i>
+  </a>
 
-<!-- Flyout Nav Trigger -->
-<span class="icon-brand-2 flyout-trigger" id="flyout-trigger">
-    <i class="fa fa-bars nav-open"></i>
-    <i class="fa fa-times nav-close"></i>
-</span>
-
-<!-- Flyout Nav -->
-<nav class="flyout-container" id="flyout">
-    <ul>
-        <li><a href="/#/">Start</a></li>
-        <li><a href="/#/account">My account</a></li>
-        <li><a href="/#/about">About us</a></li>
-    </ul>
-</nav>
-
-<!-- Site Overlay -->
-<div class="site-overlay" id="site-overlay"></div>
+  <flyout items="items"></flyout>
+</div>
