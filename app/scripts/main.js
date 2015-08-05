@@ -4,7 +4,7 @@ angular.module('trifork', [
   'appControllers',
   'appBackend',
   'appRouter',
-  'flyout',
+  'navigation',
   'angular-chartist'
 ]);
 
