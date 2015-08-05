@@ -4,6 +4,7 @@ angular.module('trifork', [
   'appControllers',
   'appBackend',
   'appRouter',
+  'navigation',
   'angular-chartist'
 ]);
 
@@ -14,6 +15,11 @@ appControllers.controller('LoginCtrl', ['$scope', 'Api',
     $scope.submit = function(e) {
       Api.login(e.email, e.password)
     }
+  }]);
+
+appControllers.controller('HeaderCtrl', ['$scope', 'MenuItems',
+  function ($scope, MenuItems) {
+    $scope.menuItems = MenuItems
   }]);
 
 appControllers.controller('HomeCtrl', ['$scope', 'Api',
