@@ -24,11 +24,9 @@
 }
 
 .transactions {
-  background: #fff;
-  border: 1px solid #222;
+  background: darken($dark-white, 5%);
   color: #222;
   padding: 10px;
-  border-radius: 10px;
 }
 
 .flyout-container.active {
