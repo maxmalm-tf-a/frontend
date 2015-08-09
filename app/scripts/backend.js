@@ -19,6 +19,22 @@ backend.service('Api', ['$http', '$cookies', '$location', '$route',
       });
     }
 
+    this.register = function(email, password) {
+      self = this;
+      $http.get(base + 'register', {
+        params: {
+          username: email,
+          password: password
+        }
+      }).success(function(data, status, headers, config) {
+        if(data) {
+          $cookies.put('token', data.data);
+          $location.path('/account');
+          self.seedDatabase();
+        }
+      });
+    }
+
     this.logout = function () {
       $cookies.remove('token');
       $location.path('/');
@@ -49,7 +65,7 @@ backend.service('Api', ['$http', '$cookies', '$location', '$route',
     }
 
     this.storeTransaction = function(text, value, date) {
-      return $http.post(base + 'transactions', {
+      return $http.get(base + 'transactions', {
         params: {
           token: $cookies.get('token')
         }
@@ -60,7 +76,8 @@ backend.service('Api', ['$http', '$cookies', '$location', '$route',
     }
 
     this.seedDatabase = function() {
-      return $http.get(base + 'populate', {
+      console.log($cookies.get('token'))
+      return $http.post(base + 'populate', {
         params: {
           token: $cookies.get('token')
         }
