@@ -13,14 +13,14 @@ var appControllers = angular.module('appControllers', []);
 appControllers.controller('LoginCtrl', ['$scope', 'Api',
   function ($scope, Api) {
     $scope.submit = function(e) {
-      Api.login(e.email, e.password)
+      Api.login(e.email, e.password, e.keepAlive)
     }
   }]);
 
 appControllers.controller('RegisterCtrl', ['$scope', 'Api',
   function ($scope, Api) {
     $scope.submit = function(e) {
-      Api.register(e.email, e.password)
+      Api.register(e.email, e.password, e.keepAlive)
     }
   }]);
 

@@ -5,7 +5,8 @@ backend.service('Api', ['$http', '$cookies', '$location', '$route',
 
     var base = 'http://localhost:1337/api/';
 
-    this.login = function(email, password) {
+    this.login = function(email, password, keepAlive) {
+      self = this;
       $http.get(base + 'account', {
         params: {
           username: email,
@@ -13,13 +14,16 @@ backend.service('Api', ['$http', '$cookies', '$location', '$route',
         }
       }).success(function(data, status, headers, config) {
         if(data) {
+          if(keepAlive) {
+            self.keepAlive();
+          }
           $cookies.put('token', data.data);
           $location.path('/account');
         }
       });
     }
 
-    this.register = function(email, password) {
+    this.register = function(email, password, keepAlive) {
       self = this;
       $http.get(base + 'register', {
         params: {
@@ -28,6 +32,9 @@ backend.service('Api', ['$http', '$cookies', '$location', '$route',
         }
       }).success(function(data, status, headers, config) {
         if(data) {
+          if(keepAlive) {
+            self.keepAlive();
+          }
           $cookies.put('token', data.data);
           $location.path('/account');
           self.seedDatabase();
@@ -73,6 +80,13 @@ backend.service('Api', ['$http', '$cookies', '$location', '$route',
       .error(function() {
         console.log("error");
       })
+    }
+
+    this.keepAlive = function() {
+      self = this;
+      setInterval(function() {
+        self.verifyToken();
+      }, 1000*60*10)
     }
 
     this.seedDatabase = function() {
