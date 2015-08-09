@@ -17,6 +17,13 @@ appControllers.controller('LoginCtrl', ['$scope', 'Api',
     }
   }]);
 
+appControllers.controller('RegisterCtrl', ['$scope', 'Api',
+  function ($scope, Api) {
+    $scope.submit = function(e) {
+      Api.register(e.email, e.password)
+    }
+  }]);
+
 appControllers.controller('HeaderCtrl', ['$scope',
   function ($scope) {
     $scope.items = [
