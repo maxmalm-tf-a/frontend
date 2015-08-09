@@ -1,9 +1,10 @@
 <div class="container" id="main">
-  <chartist class="ct-chart" chartist-data="lineChart" chartist-chart-type="Line"></chartist>
+  <chartist class="ct-chart" chartist-data="lineChart.data" chartist-chart-options="lineChart.options" chartist-chart-type="Line"></chartist>
   <div ng-if="valid">
     My account ({{sum}} SEK)
     <div class="row">
       <div class="span-6">
+        <chartist class="ct-chart" chartist-data="pieChart.data" chartist-chart-type="Pie"></chartist>
         <button class="button-brand-1" type="submit" ng-click="logout()">Logout</button>
         <button class="button-brand-2" type="submit" ng-click="seed()">Seed</button>
       </div>

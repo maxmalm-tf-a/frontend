@@ -51,17 +51,19 @@ appControllers.controller('AccountCtrl', ['$scope', 'Api',
         if(response.data.data.length > 0) {
           $scope.sum = response.data.data[0].sum;
           $scope.transactions = response.data.data;
+          $scope.transactions.reverse();
 
           // Get chart data
           // I don't really like the way this is done
-          var data = response.data.data.reverse();
+          var data = response.data.data;
           var dataset = [];
           var labels = [];
           data.map(function (item) {
             labels.push(item.date)
             dataset.push(item.sum)
           });
-          $scope.lineChart = {
+          $scope.lineChart = {}
+          $scope.lineChart.data = {
             labels: labels,
             series: [
               {
@@ -69,6 +71,37 @@ appControllers.controller('AccountCtrl', ['$scope', 'Api',
               }
             ]
           };
+          $scope.lineChart.options = {
+            axisX: {
+              labelInterpolationFnc: function skipLabels(value, index) {
+                return index % 5  === 0 ? value : null;
+              }
+            }
+          }
+
+          var dataset = [];
+          data.map(function (item) {
+            if(item.value < 0) {
+              if(typeof(dataset[item.category]) === "undefined") {
+                dataset[item.category] = +item.value;
+              }
+              else {
+                dataset[item.category] = +dataset[item.category] + +item.value;
+              }
+            }
+          });
+          var serie = [];
+          var labels = [];
+          for(var key in dataset) {
+            var value = dataset[key] *= -1;
+            serie.push(value);
+            labels.push(key);
+          }
+          $scope.pieChart = {};
+          $scope.pieChart.data = {
+            labels: labels,
+            series: serie
+          }
         }
       })
     });
